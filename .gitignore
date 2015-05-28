@@ -4,6 +4,8 @@
 .svn
 .CVS
 .idea
+*.css
+*.map
 node_modules
 Thumbs.db
 npm-debug.log
