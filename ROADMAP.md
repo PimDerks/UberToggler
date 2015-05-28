@@ -13,5 +13,11 @@
 ## Ideas
 
 * Use ARIA-states instead of classes?
+  * aria-hidden for hiding content, not perceivable
+  * aria-disabled for visible content, but not usable/editable
+* Use ARIA-properties for linking triggers to toggles?
+  * An anchor has an href, targetting the toggle
+  * A button hasnt't got an anchor, we can use aria-controls="foo baz bar" for that.
+  * For multiple toggles on an anchor, we can merge the href with the aria-controls attribute.
 * Only allow anchors/buttons to be triggers?
 * Set tabindex automatically on triggers?
