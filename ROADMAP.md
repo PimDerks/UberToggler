@@ -2,14 +2,16 @@
 
 ## Functionalities
 
-* Multiple targets.
+* A toggle has an on/off state.
+* A trigger controls at least 1 toggle, but is a toggle itself as well (like a light switch).
+* A trigger can control multiple toggles as well.
+* Toggles can form groups, which can be used for functionality like tabs, accordions etc. where only 1 toggle can be active at a time.
 * Clicking outside of toggle deactivates it (optional).
-* When a toggle is activated its triggers get updates as well.
-* Listen to hash-changes (optional).
-* Update hash when toggle is activated (optional).
-* Group toggles together for functionality like tabs, accordions etc.
-* Allow inputs to be triggers (e.g. radio buttons, checkboxes, select).
-* A "Collapse" child class which inherits the main Toggle logic, but adds height/width measurements to allow CSS animation.
+* When a toggle is activated its triggers get updated as well.
+* A toggle can listen to hash-changes (optional, should probably be default when trigger is an anchor)
+* A toggle can update the hash when activated (optional, should probably be default when trigger is an anchor)
+* A trigger will usually be an anchor or a button, but inputs (e.g. radio buttons, checkboxes, select) will also be supported.
+* A "collapse" child class which inherits the main Toggle logic, but adds height/width measurements to allow CSS animation.
 
 ## Ideas
 
@@ -29,4 +31,4 @@
 * Create CoffeeScript and/or TypeScript versions of the library to finally get some experience with those libraries.
 * Create modules to work with RequireJS/CommonJS.
 * Use Bower/NPM.
-
+* Add unit test/end-to-end test (Mocha? Jasmine?)
