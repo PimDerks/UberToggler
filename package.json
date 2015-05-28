@@ -1,0 +1,28 @@
+{
+    "name": "UberToggler",
+    "version": "0.0.1",
+    "description": "UberToggler",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PimDerks/UberToggler.git"
+    },
+    "bugs": {
+        "url": "https://github.com/PimDerks/UberToggler/issues"
+    },
+    "keywords": [
+        "javascript"
+    ],
+    "author": {
+        "name": "Pim Derks",
+        "url": "http://pimderks.com"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        }
+    ],
+    "readmeFilename": "README.md",
+    "dependencies": {},
+    "devDependencies": {}
+}
