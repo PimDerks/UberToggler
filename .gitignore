@@ -1,2 +1,10 @@
-.idea/
-node_modules/
+.DS_Store
+.cache
+.hg
+.svn
+.CVS
+.idea
+node_modules
+Thumbs.db
+npm-debug.log
+.sass-cache
