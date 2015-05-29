@@ -79,12 +79,8 @@ var Toggle = (function(){
 
         _sync: function(active){
 
-            if(active && !this.isActive()){
-                this.activate();
-            }
-
-            if(!active && this.isActive()){
-                this.deactivate();
+            if(active !== this.isActive()){
+                this.toggle();
             }
 
         }
