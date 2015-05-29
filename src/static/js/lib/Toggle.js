@@ -35,8 +35,7 @@ var Toggle = (function(){
             this._manager.publish('toggle', {
                 toggle: this,
                 id: this.getId(),
-                active: this.isActive(),
-                targets: []
+                active: this.isActive()
             });
         },
 
@@ -71,7 +70,7 @@ var Toggle = (function(){
         },
 
         _onToggle: function(e){
-            if(e.targets.length > 0){
+            if(e.targets && e.targets.length > 0){
                 if(e.targets.indexOf(this.getId()) > -1){
                     this.toggle();
                 }

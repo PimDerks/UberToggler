@@ -22,12 +22,14 @@ var Trigger = (function(){
     };
 
     p._onChange = function(){
+
         this._manager.publish('toggle', {
             toggle: this,
             id: this.getId(),
             active: this.isActive(),
             targets: this._targets
         });
+
     };
 
     p._getTargetIDs = function(){
@@ -44,6 +46,25 @@ var Trigger = (function(){
 
     p._onClick = function(e){
         this.toggle();
+    };
+
+    p._onToggle = function(e){
+
+        _parent.prototype._onToggle.call(this, e);
+
+        if(e.targets){
+
+            var matches = this._targets.filter(function(t){
+                return e.targets.indexOf(t) !== -1;
+            });
+
+            if(matches.length > 0){
+                if(e.active !== this.isActive()){
+                    this.toggle();
+                }
+            }
+        }
+
     };
 
     return exports;
