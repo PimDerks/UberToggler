@@ -8,11 +8,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="static/scss/screen.css" />
     </head>
+    <style>
+        .activated { background: blue; }
+        .deactivated { background: red; }
+    </style>
     <body>
 
-        <div class="toggle">Toggle</div>
+        <h1>UberToggle</h1>
+
+        <h2>Toggle with a single trigger</h2>
+        <div class="toggle" id="toggle">Toggle</div>
+        <a href="#toggle" class="trigger" id="trigger">Trigger</a>
+
+        <!-- <h2>Toggle with multiple triggers</h2>
+        <div class="toggle" id="toggle-multiple">Toggle</div>
+        <a href="#toggle-multiple" id="trigger-1">Trigger</a>
+        <a href="#toggle-multiple" id="trigger-2">Trigger</a>
+
+        <h2>Toggle Group</h2>
+        <a href="#toggle-group-1" id="trigger-group-1">Trigger 1</a>
+        <a href="#toggle-group-2" id="trigger-group-2">Trigger 2</a>
+        <a href="#toggle-group-3" id="trigger-group-3">Trigger 3</a>
+        <div class="toggle" id="toggle-group-1" data-group="group">Toggle 1</div>
+        <div class="toggle" id="toggle-group-2" data-group="group">Toggle 2</div>
+        <div class="toggle" id="toggle-group-3" data-group="group">Toggle 3</div> -->
 
     </body>
+    <script src="static/js/util/Mediator.js"></script>
     <script src="static/js/lib/Toggle.js"></script>
+    <script src="static/js/lib/Trigger.js"></script>
     <script src="static/js/main.js"></script>
 </html>
