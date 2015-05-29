@@ -59,15 +59,7 @@ var Trigger = (function(){
             });
 
             if(matches.length > 0){
-
-                if(e.active && !this.isActive()){
-                    this.activate();
-                }
-
-                if(!e.active && this.isActive()){
-                    this.deactivate();
-                }
-
+                _parent.prototype._sync.call(this, e.active);
             }
         }
 

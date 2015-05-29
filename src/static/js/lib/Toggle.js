@@ -70,19 +70,23 @@ var Toggle = (function(){
         },
 
         _onToggle: function(e){
-            if(e.targets && e.targets.length > 0){
+            if(e.targets){
                 if(e.targets.indexOf(this.getId()) > -1){
-
-                    if(e.active && !this.isActive()){
-                        this.activate();
-                    }
-
-                    if(!e.active && this.isActive()){
-                        this.deactivate();
-                    }
-
+                    this._sync(e.active);
                 }
             }
+        },
+
+        _sync: function(active){
+
+            if(active && !this.isActive()){
+                this.activate();
+            }
+
+            if(!active && this.isActive()){
+                this.deactivate();
+            }
+
         }
 
     };
