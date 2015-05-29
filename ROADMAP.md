@@ -29,6 +29,6 @@
 ## Learning
 
 * Create CoffeeScript and/or TypeScript versions of the library to finally get some experience with those libraries.
-* Create modules to work with RequireJS/CommonJS.
+* Create modules to work with RequireJS/CommonJS and without an AMD loader.
 * Use Bower/NPM.
 * Add unit test/end-to-end test (Mocha? Jasmine?)
