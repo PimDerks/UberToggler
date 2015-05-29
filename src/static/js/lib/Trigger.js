@@ -44,7 +44,9 @@ var Trigger = (function(){
         if(this._element.getAttribute('aria-controls')){
             var targets = this._element.getAttribute('aria-controls').split(' ');
             targets.forEach(function(t){
-                result.push(t);
+                if(result.indexOf(t) === -1) {
+                    result.push(t);
+                }
             });
         }
 
