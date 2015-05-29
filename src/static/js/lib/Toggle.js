@@ -72,7 +72,15 @@ var Toggle = (function(){
         _onToggle: function(e){
             if(e.targets && e.targets.length > 0){
                 if(e.targets.indexOf(this.getId()) > -1){
-                    this.toggle();
+
+                    if(e.active && !this.isActive()){
+                        this.activate();
+                    }
+
+                    if(!e.active && this.isActive()){
+                        this.deactivate();
+                    }
+
                 }
             }
         }

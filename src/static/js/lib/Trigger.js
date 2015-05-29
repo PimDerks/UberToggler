@@ -59,9 +59,15 @@ var Trigger = (function(){
             });
 
             if(matches.length > 0){
-                if(e.active !== this.isActive()){
-                    this.toggle();
+
+                if(e.active && !this.isActive()){
+                    this.activate();
                 }
+
+                if(!e.active && this.isActive()){
+                    this.deactivate();
+                }
+
             }
         }
 
