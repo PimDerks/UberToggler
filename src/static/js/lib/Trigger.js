@@ -41,6 +41,13 @@ var Trigger = (function(){
             href ? result.push(href.replace('#','')) : null;
         }
 
+        if(this._element.getAttribute('aria-controls')){
+            var targets = this._element.getAttribute('aria-controls').split(' ');
+            targets.forEach(function(t){
+                result.push(t);
+            });
+        }
+
         return result;
     };
 
