@@ -16,9 +16,13 @@
 
         <h1>UberToggle</h1>
 
-        <h2>Toggle with a single trigger</h2>
+        <h2>Toggle with a single trigger (anchor)</h2>
         <div class="toggle" id="toggle">Toggle</div>
         <a href="#toggle" class="trigger" id="trigger">Trigger</a>
+
+        <h2>Toggle with a single trigger (button)</h2>
+        <div class="toggle" id="toggle-button">Toggle</div>
+        <button type="button" aria-controls="toggle-button" class="trigger" id="toggle-button-trigger">Trigger</button>
 
         <h2>Toggle with multiple triggers</h2>
         <div class="toggle" id="toggle-multiple">Toggle</div>
@@ -28,7 +32,7 @@
         <h2>Trigger with multiple targets</h2>
         <div class="toggle" id="multiple-target-a">Toggle A</div>
         <div class="toggle" id="multiple-target-b">Toggle B</div>
-        <button aria-controls="multiple-target-a multiple-target-b" class="trigger" id="trigger-multiple-target">Trigger</button>
+        <button type="button" aria-controls="multiple-target-a multiple-target-b" class="trigger" id="trigger-multiple-target">Trigger</button>
 
         <!-- <h2>Toggle Group</h2>
         <a href="#toggle-group-1" id="trigger-group-1">Trigger 1</a>
