@@ -12,6 +12,7 @@
 * A toggle can update the hash when activated (optional, should probably be default when trigger is an anchor)
 * A trigger will usually be an anchor or a button, but inputs (e.g. radio buttons, checkboxes, select) will also be supported.
 * A "collapse" child class which inherits the main Toggle logic, but adds height/width measurements to allow CSS animation.
+* On initial load, check if trigger is active (e.g. input is checked or hash in URL).
 
 ## Ideas
 
