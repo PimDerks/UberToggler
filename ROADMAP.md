@@ -25,6 +25,13 @@
   * Or maybe we should just use the aria-controls attribute IF it's available, as it would duplicate the href-element either way.
 * Only allow anchors/buttons to be triggers?
 * Set tabindex automatically on triggers?
+* Other ways of enabling a toggle
+  * Cursor near
+  * In view (scroll position)
+  * Trigger selected (checkbox/radio)
+  * Trigger has value (other inputs)
+  * Selected value of a select.
+  * Hash
 
 ## Learning
 
