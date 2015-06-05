@@ -8,11 +8,49 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="static/scss/screen.css" />
     </head>
+    <style>
+        .activated { background: blue; }
+        .deactivated { background: red; }
+    </style>
     <body>
 
-        <div class="toggle">Toggle</div>
+        <h1>UberToggle</h1>
+
+        <h2>Toggle with a single trigger (anchor)</h2>
+        <div class="toggle" id="toggle">Toggle</div>
+        <a href="#toggle" class="trigger" id="trigger">Trigger</a>
+
+        <h2>Toggle with a single trigger (button)</h2>
+        <div class="toggle" id="toggle-button">Toggle</div>
+        <button type="button" aria-controls="toggle-button" class="trigger" id="toggle-button-trigger">Trigger</button>
+
+        <h2>Toggle with multiple triggers</h2>
+        <div class="toggle" id="toggle-multiple">Toggle</div>
+        <a href="#toggle-multiple" id="trigger-1" class="trigger">Trigger A</a>
+        <a href="#toggle-multiple" id="trigger-2" class="trigger">Trigger B</a>
+
+        <h2>Trigger with multiple targets</h2>
+        <div class="toggle" id="multiple-target-a">Toggle A</div>
+        <div class="toggle" id="multiple-target-b">Toggle B</div>
+        <button type="button" aria-controls="multiple-target-a multiple-target-b" class="trigger" id="trigger-multiple-target">Trigger</button>
+
+        <h2>Trigger with multiple targets and multiple triggers</h2>
+        <div class="toggle" id="multiple-target-a1">Toggle A</div>
+        <div class="toggle" id="multiple-target-b1">Toggle B</div>
+        <button type="button" aria-controls="multiple-target-a1 multiple-target-b1" class="trigger" id="trigger-multiple-target-a">Trigger A</button>
+        <button type="button" aria-controls="multiple-target-a1 multiple-target-b1" class="trigger" id="trigger-multiple-target-b">Trigger B</button>
+
+        <!-- <h2>Toggle Group</h2>
+        <a href="#toggle-group-1" id="trigger-group-1">Trigger 1</a>
+        <a href="#toggle-group-2" id="trigger-group-2">Trigger 2</a>
+        <a href="#toggle-group-3" id="trigger-group-3">Trigger 3</a>
+        <div class="toggle" id="toggle-group-1" data-group="group">Toggle 1</div>
+        <div class="toggle" id="toggle-group-2" data-group="group">Toggle 2</div>
+        <div class="toggle" id="toggle-group-3" data-group="group">Toggle 3</div> -->
 
     </body>
+    <script src="static/js/util/Mediator.js"></script>
     <script src="static/js/lib/Toggle.js"></script>
+    <script src="static/js/lib/Trigger.js"></script>
     <script src="static/js/main.js"></script>
 </html>

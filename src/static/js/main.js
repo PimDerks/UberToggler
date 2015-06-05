@@ -1,11 +1,20 @@
 function init(){
 
     // get toggles
-    var toggles = document.querySelectorAll('.toggle');
+    var toggles = document.querySelectorAll('.toggle'),
+        triggers = document.querySelectorAll('.trigger');
+
+    var TogglesInitialized = [],
+        TriggersInitialized = [];
 
     // initialize toggles
     [].slice.call(toggles).forEach(function(toggle){
-        new Toggle(toggle, {});
+        TogglesInitialized.push(new Toggle(toggle, {}));
+    });
+
+    // initialize triggers
+    [].slice.call(triggers).forEach(function(trigger){
+        TriggersInitialized.push(new Trigger(trigger, {}));
     });
 
 };
