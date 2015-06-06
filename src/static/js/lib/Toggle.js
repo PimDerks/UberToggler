@@ -1,5 +1,7 @@
 var Toggle = (function(){
 
+    'use strict';
+
     var exports = function(element, options){
 
         // bounce
@@ -14,7 +16,9 @@ var Toggle = (function(){
         this._element = element;
         this._options = options;
 
-        this._manager = Mediator.getInstance();
+        this._mediator = Mediator.getInstance();
+
+        this._manager = Manager.getInstance();
 
         this._active = false;
 
@@ -27,16 +31,21 @@ var Toggle = (function(){
         _initialize: function(){
 
             this._onToggleBind = this._onToggle.bind(this);
-            this._manager.subscribe('toggle', this._onToggleBind);
+            this._mediator.subscribe('toggle', this._onToggleBind);
+
+            // register
+            this._manager.register(this);
 
         },
 
         _onChange: function(){
-            this._manager.publish('toggle', {
+
+            this._mediator.publish('toggle', {
                 toggle: this,
                 id: this.getId(),
                 active: this.isActive()
             });
+
         },
 
         getId: function(){
@@ -45,6 +54,10 @@ var Toggle = (function(){
 
         getElement: function(){
             return this._element;
+        },
+
+        getGroup: function(){
+            return this._element.dataset.group;
         },
 
         activate: function(){
@@ -69,12 +82,22 @@ var Toggle = (function(){
             this.isActive() ? this.deactivate() : this.activate();
         },
 
-        _onToggle: function(e){
+        eventMatch: function(e){
+
             if(e.targets){
-                if(e.targets.indexOf(this.getId()) > -1){
-                    this._sync(e.active);
-                }
+                return e.targets.indexOf(this.getId()) > -1;
             }
+
+            return false;
+
+        },
+
+        _onToggle: function(e){
+
+            if(this.eventMatch(e)){
+                this._sync(e.active);
+            }
+
         },
 
         _sync: function(active){

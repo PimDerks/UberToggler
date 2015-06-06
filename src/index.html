@@ -9,8 +9,11 @@
         <link rel="stylesheet" href="static/scss/screen.css" />
     </head>
     <style>
+        .toggle { background: green; }
         .activated { background: blue; }
+        .activated::after { content: ' - active'; }
         .deactivated { background: red; }
+        .deactivated::after { content: ' - not active'; }
     </style>
     <body>
 
@@ -40,16 +43,17 @@
         <button type="button" aria-controls="multiple-target-a1 multiple-target-b1" class="trigger" id="trigger-multiple-target-a">Trigger A</button>
         <button type="button" aria-controls="multiple-target-a1 multiple-target-b1" class="trigger" id="trigger-multiple-target-b">Trigger B</button>
 
-        <!-- <h2>Toggle Group</h2>
-        <a href="#toggle-group-1" id="trigger-group-1">Trigger 1</a>
-        <a href="#toggle-group-2" id="trigger-group-2">Trigger 2</a>
-        <a href="#toggle-group-3" id="trigger-group-3">Trigger 3</a>
+        <h2>Toggle Group</h2>
+        <button class="trigger" type="button" aria-controls="toggle-group-1" id="trigger-group-1">Trigger 1</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-2" id="trigger-group-2">Trigger 2</button>
+
         <div class="toggle" id="toggle-group-1" data-group="group">Toggle 1</div>
         <div class="toggle" id="toggle-group-2" data-group="group">Toggle 2</div>
-        <div class="toggle" id="toggle-group-3" data-group="group">Toggle 3</div> -->
 
     </body>
     <script src="static/js/util/Mediator.js"></script>
+    <script src="static/js/lib/Manager.js"></script>
+    <script src="static/js/lib/Group.js"></script>
     <script src="static/js/lib/Toggle.js"></script>
     <script src="static/js/lib/Trigger.js"></script>
     <script src="static/js/main.js"></script>

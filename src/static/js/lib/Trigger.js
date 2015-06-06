@@ -1,5 +1,7 @@
 var Trigger = (function(){
 
+    'use strict';
+
     var _parent = Toggle;
 
     var exports = function(element, options){
@@ -23,7 +25,7 @@ var Trigger = (function(){
 
     p._onChange = function(){
 
-        this._manager.publish('toggle', {
+        this._mediator.publish('toggle', {
             toggle: this,
             id: this.getId(),
             active: this.isActive(),
@@ -57,19 +59,19 @@ var Trigger = (function(){
         this.toggle();
     };
 
-    p._onToggle = function(e){
+    p.eventMatch = function(e){
 
-        _parent.prototype._onToggle.call(this, e);
+        var matches = [];
 
         if(e.targets){
-
-            var matches = this._targets.filter(function(t){
+            matches = this._targets.filter(function(t){
                 return e.targets.indexOf(t) !== -1;
             });
 
-            if(matches.length > 0){
-                _parent.prototype._sync.call(this, e.active);
-            }
+            return matches.length > 0;
+
+        } else {
+            return this._targets.indexOf(e.toggle.getId()) > -1;
         }
 
     };
