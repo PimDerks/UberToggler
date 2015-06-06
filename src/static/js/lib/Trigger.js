@@ -88,7 +88,16 @@ var Trigger = (function(){
      */
 
     p._onClick = function(e){
+
+        if(this._options.onlyActivate){
+            if(!this.isActive()){
+                this.activate();
+            }
+            return;
+        }
+
         this.toggle();
+
     };
 
     /**

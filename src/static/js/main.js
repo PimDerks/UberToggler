@@ -9,12 +9,14 @@ function init(){
 
     // initialize toggles
     [].slice.call(toggles).forEach(function(toggle){
-        TogglesInitialized.push(new Toggle(toggle, {}));
+        var toggle = new Toggle(toggle, toggle.dataset.options ? JSON.parse(toggle.dataset.options) : null);
+        TogglesInitialized.push(toggle);
     });
 
     // initialize triggers
     [].slice.call(triggers).forEach(function(trigger){
-        TriggersInitialized.push(new Trigger(trigger, {}));
+        var trigger = new Trigger(trigger, trigger.dataset.options ? JSON.parse(trigger.dataset.options) : null);
+        TriggersInitialized.push(trigger);
     });
 
 };
