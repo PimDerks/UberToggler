@@ -56,7 +56,7 @@ var Manager = (function(){
             }
 
             // remove from this._toggles
-            var _this = t;
+            var _this = this;
             this._toggles.forEach(function(t, i){
                 if (t === Toggle) {
                     _this._toggles.splice(i, 1);
