@@ -13,6 +13,12 @@ var Group = (function(){
 
     exports.prototype = {
 
+        /**
+         * Initialize this group.
+         *
+         * @private
+         */
+
         _initialize: function(){
 
             this._manager = Manager.getInstance();
@@ -22,10 +28,15 @@ var Group = (function(){
 
         },
 
+        /**
+         * Respond to the toggle-event.
+         *
+         * @param e
+         * @private
+         */
+
         _onToggle: function(e){
             var toggle = e.toggle;
-
-            console.log(this.hasActiveToggle());
 
             if(this.containsToggle(toggle) && e.active){
                 this._closeAllExcept(toggle);
@@ -47,20 +58,45 @@ var Group = (function(){
             this._toggles.push(Toggle);
 
         },
-        
+
+        /**
+         * Get the ID of this group.
+         *
+         * @returns {*}
+         */
+
         getId: function(){
             return this._id;
         },
-        
+
+        /**
+         * Get all Toggles in this group.
+         *
+         * @returns {Array}
+         */
+
         getToggles: function(){
             return this._toggles;  
         },
+
+        /**
+         * Check if one of the Toggles in this group is active.
+         *
+         * @returns {boolean}
+         */
 
         hasActiveToggle: function(){
             return this._toggles.filter(function(t){
                 return t.isActive();
             }).length > 0;
         },
+
+        /**
+         * Check if the passed in Toggle is contained in this group.
+         *
+         * @param Toggle
+         * @returns {boolean}
+         */
 
         containsToggle: function(Toggle){
             return this._toggles.indexOf(Toggle) > -1;
@@ -71,7 +107,6 @@ var Group = (function(){
          *
          * @memberof ToggleGroup
          * @param {Object} Toggle
-         * @public
          */
 
         remove:function(Toggle) {
@@ -92,7 +127,6 @@ var Group = (function(){
         /**
          * Close all toggles.
          *
-         * @memberof ToggleGroup
          * @param {Object} Toggle
          * @private
          */
@@ -107,9 +141,8 @@ var Group = (function(){
 
         /**
          * Close all toggles except the given Toggle.
-         *
-         * @memberof ToggleGroup
          * @param {Object} Toggle
+         * @private
          */
 
         _closeAllExcept:function(Toggle){
@@ -124,10 +157,8 @@ var Group = (function(){
 
         /**
          * Get the amount of items.
-         *
-         * @memberof ToggleGroup
+         
          * @return {Number} The number of items.
-         * @public
          */
 
         getAmount:function(){
@@ -137,8 +168,7 @@ var Group = (function(){
         /**
          * Unload.
          *
-         * @class ToggleGroup
-         * @method _unload
+         * @method unload
          */
 
         unload:function() {

@@ -28,8 +28,15 @@ var Toggle = (function(){
 
     exports.prototype = {
 
+        /**
+         * Initialize Toggle.
+         *
+         * @private
+         */
+
         _initialize: function(){
 
+            // Listen to toggle-event
             this._onToggleBind = this._onToggle.bind(this);
             this._mediator.subscribe('toggle', this._onToggleBind);
 
@@ -37,6 +44,12 @@ var Toggle = (function(){
             this._manager.register(this);
 
         },
+
+        /**
+         * Let the world know this Toggle's state has changed.
+         *
+         * @private
+         */
 
         _onChange: function(){
 
@@ -48,17 +61,39 @@ var Toggle = (function(){
 
         },
 
+        /**
+         * Get the ID of this Toggle.
+         *
+         * @returns {string}
+         */
+
         getId: function(){
             return this._element.id;
         },
+
+        /**
+         * Get the element of this Toggle.
+         *
+         * @returns {Element}
+         */
 
         getElement: function(){
             return this._element;
         },
 
+        /**
+         * Get the group of this Toggle, if available.
+         *
+         * @returns {Function}
+         */
+
         getGroup: function(){
             return this._element.dataset.group;
         },
+
+        /**
+         * Activate this Toggle.
+         */
 
         activate: function(){
             this._element.classList.add('activated');
@@ -67,6 +102,10 @@ var Toggle = (function(){
             this._onChange();
         },
 
+        /**
+         *  Deactivate this Toggle.
+         */
+
         deactivate: function(){
             this._element.classList.remove('activated');
             this._element.classList.add('deactivated');
@@ -74,13 +113,29 @@ var Toggle = (function(){
             this._onChange();
         },
 
+        /**
+         * Check if this Toggle is active.
+         *
+         * @returns {boolean|*}
+         */
+
         isActive: function(){
             return this._isActive;
         },
 
+        /**
+         * Reverse the state of this Toggle.
+         */
+
         toggle: function(){
             this.isActive() ? this.deactivate() : this.activate();
         },
+
+        /**
+         * Check if this Toggle should respond to a toggle-event thrown.
+         * @param e
+         * @returns {boolean}
+         */
 
         eventMatch: function(e){
 
@@ -92,6 +147,13 @@ var Toggle = (function(){
 
         },
 
+        /**
+         * Respond to a toggle-event.
+         *
+         * @param e
+         * @private
+         */
+
         _onToggle: function(e){
 
             if(this.eventMatch(e)){
@@ -99,6 +161,13 @@ var Toggle = (function(){
             }
 
         },
+
+        /**
+         * Sync the state of this Toggle with the given parameter.
+         *
+         * @param active
+         * @private
+         */
 
         _sync: function(active){
 

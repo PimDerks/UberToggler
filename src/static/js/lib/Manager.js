@@ -22,7 +22,6 @@ var Manager = (function(){
         /**
          * Register toggle
          *
-         * @memberof ToggleManager
          * @method register
          * @param {Object} Toggle object.
          */
@@ -40,9 +39,7 @@ var Manager = (function(){
         /**
          * Unregister toggle
          *
-         * @memberof ToggleManager
          * @param {Object} Toggle object.
-         * @public
          */
 
         remove:function(Toggle) {
@@ -71,7 +68,6 @@ var Manager = (function(){
         /**
          * Manage group
          *
-         * @memberof ToggleManager
          * @param {Object} Toggle object.
          * @private
          */
@@ -97,10 +93,8 @@ var Manager = (function(){
         /**
          * Get toggle by Id
          *
-         * @memberof ToggleManager
          * @param {String} Id of toggle to get
          * @return {Object}
-         * @public
          */
 
         getToggleById:function(id){
