@@ -25,6 +25,8 @@ var Group = (function(){
         _onToggle: function(e){
             var toggle = e.toggle;
 
+            console.log(this.hasActiveToggle());
+
             if(this.containsToggle(toggle) && e.active){
                 this._closeAllExcept(toggle);
             };
@@ -52,6 +54,12 @@ var Group = (function(){
         
         getToggles: function(){
             return this._toggles;  
+        },
+
+        hasActiveToggle: function(){
+            return this._toggles.filter(function(t){
+                return t.isActive();
+            }).length > 0;
         },
 
         containsToggle: function(Toggle){
