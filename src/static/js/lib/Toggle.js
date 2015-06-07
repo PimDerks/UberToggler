@@ -20,8 +20,6 @@ var Toggle = (function(){
 
         this._manager = Manager.getInstance();
 
-        this._active = false;
-
         this._initialize();
 
     };
@@ -37,11 +35,17 @@ var Toggle = (function(){
         _initialize: function(){
 
             // Listen to toggle-event
-            this._onToggleBind = this._onToggle.bind(this);
-            this._mediator.subscribe('toggle', this._onToggleBind);
+            this._onTriggerBind = this._onTrigger.bind(this);
+            this._mediator.subscribe('trigger', this._onTriggerBind);
 
             // register
             this._manager.register(this);
+
+            // set initial state
+            this._isActive = false;
+
+            // deactivate by default for now
+            this.deactivate();
 
         },
 
@@ -154,10 +158,14 @@ var Toggle = (function(){
          * @private
          */
 
-        _onToggle: function(e){
+        _onTrigger: function(e){
+
+            if(this.getGroup() && this.isActive()){
+                return;
+            }
 
             if(this.eventMatch(e)){
-                this._sync(e.active);
+                this.toggle();
             }
 
         },

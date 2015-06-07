@@ -20,8 +20,18 @@ var Trigger = (function(){
 
     p._initialize = function(){
 
-        // Call Toggle initialize
-        _parent.prototype._initialize.call(this);
+        // Listen to toggle-event
+        this._onToggleBind = this._onToggle.bind(this);
+        this._mediator.subscribe('toggle', this._onToggleBind);
+
+        // register
+        this._manager.register(this);
+
+        // set initial state
+        this._isActive = false;
+
+        // deactivate by default for now
+        this.deactivate();
 
         // Bind events
         this._onClickBind = this._onClick.bind(this);
@@ -40,13 +50,17 @@ var Trigger = (function(){
 
     p._onChange = function(){
 
-        // Let the world know
-        this._mediator.publish('toggle', {
-            toggle: this,
-            id: this.getId(),
-            active: this.isActive(),
-            targets: this._targets
-        });
+    };
+
+    p._onTrigger = function(){
+
+    };
+
+    p._onToggle = function(e){
+
+        if(this.eventMatch(e)){
+            _parent.prototype._sync.call(this, e.active);
+        }
 
     };
 
@@ -89,14 +103,13 @@ var Trigger = (function(){
 
     p._onClick = function(e){
 
-        if(this._options.onlyActivate){
-            if(!this.isActive()){
-                this.activate();
-            }
-            return;
-        }
-
-        this.toggle();
+        // Let the world know
+        this._mediator.publish('trigger', {
+            toggle: this,
+            id: this.getId(),
+            active: this.isActive(),
+            targets: this._targets
+        });
 
     };
 

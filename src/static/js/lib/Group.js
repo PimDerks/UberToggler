@@ -36,11 +36,16 @@ var Group = (function(){
          */
 
         _onToggle: function(e){
+
             var toggle = e.toggle;
 
-            if(this.containsToggle(toggle) && e.active){
-                this._closeAllExcept(toggle);
-            };
+            if(this.containsToggle(toggle)){
+
+                if(e.active){
+                    this._closeAllExcept(toggle);
+                }
+
+            }
 
         },
 
@@ -92,6 +97,30 @@ var Group = (function(){
         },
 
         /**
+         * Get the currently active Toggle.
+         *
+         * @returns {Object}
+         */
+
+        getActiveToggle: function(){
+            var active = this._toggles.filter(function(t){
+                return t.isActive();
+            });
+
+            return active[0];
+        },
+
+        /**
+         * Keep track of the currently active Toggle.
+         *
+         * @param Toggle
+         */
+
+        setActiveToggle: function(Toggle){
+            this._activeToggle = Toggle;
+        },
+
+        /**
          * Check if the passed in Toggle is contained in this group.
          *
          * @param Toggle
@@ -134,7 +163,9 @@ var Group = (function(){
         _closeAll:function(){
 
             this._toggles.forEach(function(t){
-                t.deactivate();
+                if(t.isActive()){
+                    t.deactivate();
+                }
             });
 
         },
@@ -148,10 +179,15 @@ var Group = (function(){
         _closeAllExcept:function(Toggle){
 
             this._toggles.forEach(function(t){
-                if (t !== Toggle) {
+
+                // deactivate
+                if (t !== Toggle && t.isActive()) {
                     t.deactivate();
                 }
+
             });
+
+            this.setActiveToggle(Toggle);
 
         },
 
