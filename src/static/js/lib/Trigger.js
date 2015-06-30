@@ -128,6 +128,10 @@ var Trigger = (function(){
 
         var matches = [];
 
+        if(this._element.id === e.id) {
+            return false;
+        }
+
         // If the Event has an array of targets, check if those targets match the targets of this trigger.
         if(e.targets){
             matches = this._targets.filter(function(t){

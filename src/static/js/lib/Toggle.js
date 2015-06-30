@@ -174,7 +174,9 @@ var Toggle = (function(){
          */
 
         toggle: function(){
+
             this.isActive() ? this.deactivate() : this.activate();
+
         },
 
         /**
