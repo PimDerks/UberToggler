@@ -24,6 +24,17 @@ var TriggerInput = (function(){
 
     };
 
+    p.activate = function(){
+        console.log('activate');
+        _parent.prototype.activate.call(this);
+        this._element.checked = true;
+    };
+
+    p.deactivate = function(){
+        _parent.prototype.deactivate.call(this);
+        this._element.checked = false;
+    };
+
     p._bindEvents = function(){
 
         // custom events

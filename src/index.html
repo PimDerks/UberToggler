@@ -89,6 +89,18 @@
         <div class="toggle" id="input-radio-2" data-group="input-radio">Toggle 2</div>
         <div class="toggle" id="input-radio-3" data-group="input-radio">Toggle 3</div>
 
+        <h3>Radio Buttons with multiple trigger</h3>
+        <p>Please note that the radio buttons obviously must be in a different group to allow two of them to be active at the same time. No idea why you would do this, but it's possible! :)</p>
+        <input type="radio" aria-controls="input-radio-4" id="radio-4a" name="radio-a" />
+        <input type="radio" aria-controls="input-radio-4" id="radio-4b" name="radio-b" />
+        <input type="radio" aria-controls="input-radio-5" id="radio-5a" name="radio-a" />
+        <input type="radio" aria-controls="input-radio-5" id="radio-5b" name="radio-b" />
+        <input type="radio" aria-controls="input-radio-6" id="radio-6a" name="radio-a" />
+        <input type="radio" aria-controls="input-radio-6" id="radio-6b" name="radio-b" />
+        <div class="toggle" id="input-radio-4" data-group="input-radio">Toggle 1</div>
+        <div class="toggle" id="input-radio-5" data-group="input-radio">Toggle 2</div>
+        <div class="toggle" id="input-radio-6" data-group="input-radio">Toggle 3</div>
+
     </body>
     <script src="static/js/util/Mediator.js"></script>
     <script src="static/js/lib/Manager.js"></script>
