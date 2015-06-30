@@ -25,7 +25,6 @@ var TriggerInput = (function(){
     };
 
     p.activate = function(){
-        console.log('activate');
         _parent.prototype.activate.call(this);
         this._element.checked = true;
     };
