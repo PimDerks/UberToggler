@@ -33,28 +33,27 @@ var Trigger = (function(){
         // deactivate by default for now
         this.deactivate();
 
+        // Get targets
+        this._targets = this._getTargetIDs();
+
+        this._bindEvents();
+
+    };
+
+    p._bindEvents = function(){
+
         // Bind events
         this._onClickBind = this._onClick.bind(this);
         this._element.addEventListener('click', this._onClickBind);
 
-        // Get targets
-        this._targets = this._getTargetIDs();
-
     };
 
     /**
-     * Overwrite the default private onChange-method, as we want to include the targets property.
+     * Sync parent.
      *
+     * @param e
      * @private
      */
-
-    p._onChange = function(){
-
-    };
-
-    p._onTrigger = function(){
-
-    };
 
     p._onToggle = function(e){
 
@@ -123,6 +122,10 @@ var Trigger = (function(){
     p.eventMatch = function(e){
 
         var matches = [];
+
+        if(e.id === this._element.id){
+            return false;
+        }
 
         // If the Event has an array of targets, check if those targets match the targets of this trigger.
         if(e.targets){

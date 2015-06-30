@@ -55,7 +55,7 @@ var Toggle = (function(){
          * @private
          */
 
-        _onChange: function(){
+        _onStateChange: function(){
 
             this._mediator.publish('toggle', {
                 toggle: this,
@@ -103,7 +103,7 @@ var Toggle = (function(){
             this._element.classList.add('activated');
             this._element.classList.remove('deactivated');
             this._isActive = true;
-            this._onChange();
+            this._onStateChange();
         },
 
         /**
@@ -114,7 +114,7 @@ var Toggle = (function(){
             this._element.classList.remove('activated');
             this._element.classList.add('deactivated');
             this._isActive = false;
-            this._onChange();
+            this._onStateChange();
         },
 
         /**
@@ -142,6 +142,10 @@ var Toggle = (function(){
          */
 
         eventMatch: function(e){
+
+            if(e.id === this._element.id){
+                return false;
+            }
 
             if(e.targets){
                 return e.targets.indexOf(this.getId()) > -1;

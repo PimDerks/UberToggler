@@ -2,10 +2,12 @@ function init(){
 
     // get toggles
     var toggles = document.querySelectorAll('.toggle'),
-        triggers = document.querySelectorAll('.trigger');
+        triggers = document.querySelectorAll('.trigger'),
+        inputs = document.querySelectorAll('input');
 
     var TogglesInitialized = [],
-        TriggersInitialized = [];
+        TriggersInitialized = [],
+        TriggerInputsInitialized = [];
 
     // initialize toggles
     [].slice.call(toggles).forEach(function(toggle){
@@ -18,6 +20,13 @@ function init(){
         var trigger = new Trigger(trigger, trigger.dataset.options ? JSON.parse(trigger.dataset.options) : null);
         TriggersInitialized.push(trigger);
     });
+
+    // initialize inputs
+    [].slice.call(inputs).forEach(function(input){
+        var trigger = new TriggerInput(input, input.dataset.options ? JSON.parse(input.dataset.options) : null);
+        TriggerInputsInitialized.push(trigger);
+    });
+
 
 };
 
