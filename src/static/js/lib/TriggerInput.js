@@ -12,17 +12,13 @@ var TriggerInput = (function(){
 
     var p = exports.prototype = Object.create(_parent.prototype);
 
-    p.isActive = function(){
-        return this._element.checked;
-    } ;
-
     p._onChange = function(){
 
         // Let the world know
         this._mediator.publish('trigger', {
             toggle: this,
             id: this.getId(),
-            active: this.isActive(),
+            active: this._element.checked,
             targets: this._targets
         });
 

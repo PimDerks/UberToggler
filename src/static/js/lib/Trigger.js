@@ -30,13 +30,14 @@ var Trigger = (function(){
         // set initial state
         this._isActive = false;
 
-        // deactivate by default for now
-        this.deactivate();
-
         // Get targets
         this._targets = this._getTargetIDs();
 
+        // Bind events
         this._bindEvents();
+
+        // deactivate by default for now
+        this.deactivate();
 
     };
 
@@ -122,10 +123,6 @@ var Trigger = (function(){
     p.eventMatch = function(e){
 
         var matches = [];
-
-        if(e.id === this._element.id){
-            return false;
-        }
 
         // If the Event has an array of targets, check if those targets match the targets of this trigger.
         if(e.targets){

@@ -11,9 +11,20 @@
     <style>
         .toggle { background: green; }
         .activated { background: blue; }
-        .activated::after { content: ' - active'; }
+        .activated::after { content: ' - active'; white-space: nowrap; }
         .deactivated { background: red; }
-        .deactivated::after { content: ' - not active'; }
+        .deactivated::after { content: ' - not active'; white-space: nowrap; }
+
+        input.activated {
+            outline: 1px solid blue;
+        }
+
+        input.deactivated {
+            outline: 1px solid red;
+        }
+
+        input.activated::after,
+        input.deactivated::after{ display: none; }
     </style>
     <body>
 
@@ -69,6 +80,14 @@
         <h3>Checkboxes</h3>
         <input type="checkbox" aria-controls="input-toggle" id="input-1" />
         <div class="toggle" id="input-toggle">Input Toggle</div>
+
+        <h3>Radio Buttons</h3>
+        <input type="radio" aria-controls="input-radio-1" id="radio-1" name="radio" />
+        <input type="radio" aria-controls="input-radio-2" id="radio-2" name="radio" />
+        <input type="radio" aria-controls="input-radio-3" id="radio-3" name="radio" />
+        <div class="toggle" id="input-radio-1" data-group="input-radio">Toggle 1</div>
+        <div class="toggle" id="input-radio-2" data-group="input-radio">Toggle 2</div>
+        <div class="toggle" id="input-radio-3" data-group="input-radio">Toggle 3</div>
 
     </body>
     <script src="static/js/util/Mediator.js"></script>
