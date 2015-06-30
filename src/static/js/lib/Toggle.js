@@ -63,6 +63,8 @@ var Toggle = (function(){
                 active: this.isActive()
             });
 
+            this._setState();
+
         },
 
         /**
@@ -115,6 +117,26 @@ var Toggle = (function(){
             this._element.classList.add('deactivated');
             this._isActive = false;
             this._onStateChange();
+        },
+
+        /**
+         * Set the state of this toggle.
+         * @private
+         */
+
+        _setState: function(){
+
+            // check if aria-hidden is available
+            if(this._element.getAttribute('aria-hidden')){
+                this._element.setAttribute('aria-hidden', !this.isActive());
+            // check if aria-disabled is available
+            } else if(this._element.getAttribute('aria-disabled')){
+                this._element.setAttribute('aria-disabled', !this.isActive());
+            // default
+            } else {
+                this._element.setAttribute('data-active', this.isActive());
+            }
+
         },
 
         /**

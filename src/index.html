@@ -25,6 +25,21 @@
 
         input.activated::after,
         input.deactivated::after{ display: none; }
+
+        [aria-hidden="true"]{
+            display: none;
+        }
+
+        [aria-disabled],
+        [data-active]{
+            transition: all 1000ms ease-out;
+        }
+
+        [aria-active="false"]
+        [aria-disabled="true"]{
+            opacity: .5;
+            pointer-events: none;
+        }
     </style>
     <body>
 
@@ -110,6 +125,27 @@
         <div class="toggle" id="select-1" data-group="select">Toggle 1</div>
         <div class="toggle" id="select-2" data-group="select">Toggle 2</div>
         <div class="toggle" id="select-3" data-group="select">Toggle 3</div>
+
+        <h2>States</h2>
+        <p>You can use various attributes to set the state of a toggle. All attributes should have <code>true</code> or <code>false</code> as their value</p>
+        <ul>
+            <li><code>aria-hidden</code> for an element which is hidden from view</li>
+            <li><code>aria-disabled</code> for an element which is not hidden from view, but is disabled</li>
+            <li><code>data-activated</code> for an element which does not match either of the above</li>
+        </ul>
+        <p>The last option is the default, as the other choices must be concious decisions made by the author (i.e. you!).</p>
+
+        <h3>ARIA-hidden</h3>
+        <div class="toggle" id="toggle-hidden" aria-hidden="true">Toggle Hidden</div>
+        <a href="#toggle-hidden" class="trigger" id="trigger-hidden">Trigger</a>
+
+        <h3>ARIA-disabled</h3>
+        <div class="toggle" id="toggle-disabled" aria-disabled="true">Toggle Disabled</div>
+        <a href="#toggle-disabled" class="trigger" id="trigger-disabled">Trigger</a>
+
+        <h3>data-activated</h3>
+        <div class="toggle" id="toggle-activated">Toggle Activated</div>
+        <a href="#toggle-activated" class="trigger" id="trigger-activated">Trigger</a>
 
     </body>
     <script src="static/js/util/Mediator.js"></script>
