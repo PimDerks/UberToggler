@@ -41,11 +41,29 @@ var Toggle = (function(){
             // register
             this._manager.register(this);
 
-            // set initial state
-            this._isActive = false;
+            // get initial state
+            this._isActive = this._getState();
 
-            // deactivate by default for now
-            this.deactivate();
+            // set initial state
+            this.isActive() ? this.activate() : this.deactivate();
+
+        },
+
+        _getState: function(){
+
+            // check if aria-hidden is available
+            if(this._element.getAttribute('aria-hidden')){
+                return this._element.getAttribute('aria-hidden') == "false";
+                // check if aria-disabled is available
+            } else if(this._element.getAttribute('aria-disabled')){
+                return this._element.getAttribute('aria-disabled') == "false";
+                // default
+            } else {
+                return this._element.getAttribute('data-active') == "true";
+            }
+
+            // default
+            return false;
 
         },
 
@@ -146,7 +164,9 @@ var Toggle = (function(){
          */
 
         isActive: function(){
+
             return this._isActive;
+
         },
 
         /**
