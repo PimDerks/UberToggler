@@ -26,7 +26,7 @@ var Manager = (function(){
          * @param {Object} Toggle object.
          */
 
-        register:function(Toggle) {
+        add:function(Toggle) {
 
             // add to togglers
             this._toggles.push(Toggle);

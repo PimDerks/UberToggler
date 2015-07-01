@@ -25,7 +25,7 @@ var Trigger = (function(){
         this._mediator.subscribe('toggle', this._onToggleBind);
 
         // register
-        this._manager.register(this);
+        this._manager.add(this);
 
         // set initial state
         this._isActive = false;

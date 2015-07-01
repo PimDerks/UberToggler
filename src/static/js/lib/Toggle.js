@@ -39,7 +39,7 @@ var Toggle = (function(){
             this._mediator.subscribe('trigger', this._onTriggerBind);
 
             // register
-            this._manager.register(this);
+            this._manager.add(this);
 
             // get initial state
             this._isActive = this._getState();
