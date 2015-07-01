@@ -47,44 +47,44 @@
 
         <h2>Toggle with a single trigger (anchor)</h2>
         <div class="toggle" id="toggle">Toggle</div>
-        <a href="#toggle" class="trigger" id="trigger">Trigger</a>
+        <a href="#toggle" class="trigger">Trigger</a>
 
         <h2>Toggle with a single trigger (button)</h2>
         <div class="toggle" id="toggle-button">Toggle</div>
-        <button type="button" aria-controls="toggle-button" class="trigger" id="toggle-button-trigger">Trigger</button>
+        <button type="button" aria-controls="toggle-button" class="trigger">Trigger</button>
 
         <h2>Toggle with multiple triggers</h2>
         <div class="toggle" id="toggle-multiple">Toggle</div>
-        <a href="#toggle-multiple" id="trigger-1" class="trigger">Trigger A</a>
-        <a href="#toggle-multiple" id="trigger-2" class="trigger">Trigger B</a>
+        <a href="#toggle-multiple" class="trigger">Trigger A</a>
+        <a href="#toggle-multiple" class="trigger">Trigger B</a>
 
         <h2>Trigger with multiple targets</h2>
         <div class="toggle" id="multiple-target-a">Toggle A</div>
         <div class="toggle" id="multiple-target-b">Toggle B</div>
-        <button type="button" aria-controls="multiple-target-a multiple-target-b" class="trigger" id="trigger-multiple-target">Trigger</button>
+        <button type="button" aria-controls="multiple-target-a multiple-target-b" class="trigger">Trigger</button>
 
         <h2>Trigger with multiple targets and multiple triggers</h2>
         <div class="toggle" id="multiple-target-a1">Toggle A</div>
         <div class="toggle" id="multiple-target-b1">Toggle B</div>
-        <button type="button" aria-controls="multiple-target-a1 multiple-target-b1" class="trigger" id="trigger-multiple-target-a">Trigger A</button>
-        <button type="button" aria-controls="multiple-target-a1 multiple-target-b1" class="trigger" id="trigger-multiple-target-b">Trigger B</button>
+        <button type="button" aria-controls="multiple-target-a1 multiple-target-b1" class="trigger">Trigger A</button>
+        <button type="button" aria-controls="multiple-target-a1 multiple-target-b1" class="trigger">Trigger B</button>
 
         <h2>Toggle Group</h2>
-        <button class="trigger" type="button" aria-controls="toggle-group-1" id="trigger-group-1">Trigger 1</button>
-        <button class="trigger" type="button" aria-controls="toggle-group-2" id="trigger-group-2">Trigger 2</button>
-        <button class="trigger" type="button" aria-controls="toggle-group-3" id="trigger-group-3">Trigger 3</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-1">Trigger 1</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-2">Trigger 2</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-3">Trigger 3</button>
 
         <div class="toggle" id="toggle-group-1" data-group="group">Toggle 1</div>
         <div class="toggle" id="toggle-group-2" data-group="group">Toggle 2</div>
         <div class="toggle" id="toggle-group-3" data-group="group">Toggle 3</div>
 
         <h2>Toggle Group with multiple triggers</h2>
-        <button class="trigger" type="button" aria-controls="toggle-group-4" id="trigger-group-1A">Trigger 1A</button>
-        <button class="trigger" type="button" aria-controls="toggle-group-4" id="trigger-group-1B">Trigger 1B</button>
-        <button class="trigger" type="button" aria-controls="toggle-group-5" id="trigger-group-2A">Trigger 2A</button>
-        <button class="trigger" type="button" aria-controls="toggle-group-5" id="trigger-group-2B">Trigger 2B</button>
-        <button class="trigger" type="button" aria-controls="toggle-group-6" id="trigger-group-3A">Trigger 3A</button>
-        <button class="trigger" type="button" aria-controls="toggle-group-6" id="trigger-group-3B">Trigger 3B</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-4">Trigger 1A</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-4">Trigger 1B</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-5">Trigger 2A</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-5">Trigger 2B</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-6">Trigger 3A</button>
+        <button class="trigger" type="button" aria-controls="toggle-group-6">Trigger 3B</button>
 
         <div class="toggle" id="toggle-group-4" data-group="group-2">Toggle 1</div>
         <div class="toggle" id="toggle-group-5" data-group="group-2">Toggle 2</div>
@@ -95,35 +95,35 @@
         <h3>Checkboxes</h3>
 
         <h4>Not checked</h4>
-        <input type="checkbox" aria-controls="input-toggle" id="input-1" />
+        <input type="checkbox" aria-controls="input-toggle" />
         <div class="toggle" id="input-toggle">Input Toggle</div>
 
         <h4>Checked</h4>
-        <input type="checkbox" aria-controls="input-toggle2" id="input-2" checked="checked" />
+        <input type="checkbox" aria-controls="input-toggle2" checked="checked" />
         <div class="toggle" id="input-toggle2">Input Toggle</div>
 
         <h3>Radio Buttons</h3>
-        <input type="radio" aria-controls="input-radio-1" id="radio-1" name="radio" />
-        <input type="radio" aria-controls="input-radio-2" id="radio-2" name="radio" />
-        <input type="radio" aria-controls="input-radio-3" id="radio-3" name="radio" />
+        <input type="radio" aria-controls="input-radio-1" name="radio" />
+        <input type="radio" aria-controls="input-radio-2" name="radio" />
+        <input type="radio" aria-controls="input-radio-3" name="radio" />
         <div class="toggle" id="input-radio-1" data-group="input-radio">Toggle 1</div>
         <div class="toggle" id="input-radio-2" data-group="input-radio">Toggle 2</div>
         <div class="toggle" id="input-radio-3" data-group="input-radio">Toggle 3</div>
 
         <h3>Radio Buttons with multiple trigger</h3>
         <p>Please note that the radio buttons obviously must be in a different group to allow two of them to be active at the same time. No idea why you would do this, but it's possible! :)</p>
-        <input type="radio" aria-controls="input-radio-4" id="radio-4a" name="radio-a" />
-        <input type="radio" aria-controls="input-radio-4" id="radio-4b" name="radio-b" />
-        <input type="radio" aria-controls="input-radio-5" id="radio-5a" name="radio-a" />
-        <input type="radio" aria-controls="input-radio-5" id="radio-5b" name="radio-b" />
-        <input type="radio" aria-controls="input-radio-6" id="radio-6a" name="radio-a" />
-        <input type="radio" aria-controls="input-radio-6" id="radio-6b" name="radio-b" />
+        <input type="radio" aria-controls="input-radio-4" name="radio-a" />
+        <input type="radio" aria-controls="input-radio-4" name="radio-b" />
+        <input type="radio" aria-controls="input-radio-5" name="radio-a" />
+        <input type="radio" aria-controls="input-radio-5" name="radio-b" />
+        <input type="radio" aria-controls="input-radio-6" name="radio-a" />
+        <input type="radio" aria-controls="input-radio-6" name="radio-b" />
         <div class="toggle" id="input-radio-4" data-group="input-radio">Toggle 1</div>
         <div class="toggle" id="input-radio-5" data-group="input-radio">Toggle 2</div>
         <div class="toggle" id="input-radio-6" data-group="input-radio">Toggle 3</div>
 
         <h3>Select</h3>
-        <select id="select" aria-controls="select-1 select-2 select-3">
+        <select aria-controls="select-1 select-2 select-3">
             <option value="1" aria-controls="select-1">Toggle 1</option>
             <option value="2" aria-controls="select-2">Toggle 2</option>
             <option value="3" aria-controls="select-3">Toggle 3</option>
@@ -145,31 +145,31 @@
 
         <h4>True</h4>
         <div class="toggle" id="toggle-hidden" aria-hidden="true">Toggle Hidden</div>
-        <a href="#toggle-hidden" class="trigger" id="trigger-hidden">Trigger</a>
+        <a href="#toggle-hidden" class="trigger">Trigger</a>
 
         <h4>False</h4>
         <div class="toggle" id="toggle-hidden-2" aria-hidden="false">Toggle Hidden</div>
-        <a href="#toggle-hidden-2" class="trigger" id="trigger-hidden-2">Trigger</a>
+        <a href="#toggle-hidden-2" class="trigger">Trigger</a>
 
         <h3>ARIA-disabled</h3>
 
         <h4>True</h4>
         <div class="toggle" id="toggle-disabled" aria-disabled="true">Toggle Disabled</div>
-        <a href="#toggle-disabled" class="trigger" id="trigger-disabled">Trigger</a>
+        <a href="#toggle-disabled" class="trigger">Trigger</a>
 
         <h4>False</h4>
         <div class="toggle" id="toggle-disabled-2" aria-disabled="false">Toggle Disabled</div>
-        <a href="#toggle-disabled-2" class="trigger" id="trigger-disabled-2">Trigger</a>
+        <a href="#toggle-disabled-2" class="trigger">Trigger</a>
 
         <h3>data-activated</h3>
 
         <h4>True</h4>
         <div class="toggle" id="toggle-activated" data-active="true">Toggle Activated</div>
-        <a href="#toggle-activated" class="trigger" id="trigger-activated">Trigger</a>
+        <a href="#toggle-activated" class="trigger">Trigger</a>
 
         <h4>False</h4>
         <div class="toggle" id="toggle-activated-2" data-active="false">Toggle Activated</div>
-        <a href="#toggle-activated-2" class="trigger" id="trigger-activated-2">Trigger</a>
+        <a href="#toggle-activated-2" class="trigger">Trigger</a>
 
     </body>
     <script src="static/js/util/Mediator.js"></script>

@@ -9,12 +9,11 @@ var Toggle = (function(){
             throw "No element passed in";
         }
 
-        if(!element.id){
-            throw "An element must have a unique ID to be a toggle";
-        }
-
         this._element = element;
         this._options = options;
+
+        this._setId();
+        this._id = this.getId();
 
         this._mediator = Mediator.getInstance();
 
@@ -92,7 +91,22 @@ var Toggle = (function(){
          */
 
         getId: function(){
-            return this._element.id;
+            return this._id;
+        },
+
+        /**
+         * Set the ID of this Toggle.
+         * @private
+         */
+
+        _setId: function(){
+            var id = this._element.id;
+            if(!id){
+                id = Math.random().toString(36).substring(7);
+                this._element.setAttribute('id', id);
+            }
+
+            this._id = id;
         },
 
         /**
