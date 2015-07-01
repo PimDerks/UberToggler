@@ -34,6 +34,9 @@ var Manager = (function(){
             // look for groups
             this._manageGroup(Toggle);
 
+            // look for triggers
+            this._getTriggersForToggle(Toggle);
+
         },
 
         /**
@@ -62,6 +65,23 @@ var Manager = (function(){
                     _this._toggles.splice(i, 1);
                 }
             });
+
+        },
+
+        /**
+         * Finds triggers for the given Toggle.
+         *
+         * @param Toggle
+         * @private
+         */
+
+        _getTriggersForToggle: function(Toggle){
+
+            var id = Toggle.getId(),
+                triggers = document.querySelectorAll('[href="#' + id + '"], [aria-controls~="' + id + '"]:not(option)');
+
+            var factory = new TriggerFactory();
+            factory.create(triggers);
 
         },
 
