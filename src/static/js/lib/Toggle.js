@@ -36,6 +36,20 @@ var Toggle = (function(){
             // Listen to toggle-event
             this._onTriggerBind = this._onTrigger.bind(this);
             this._mediator.subscribe('trigger', this._onTriggerBind);
+
+            // Listen to hashchange
+            this._onHashChangeBind = this._onHashChange.bind(this);
+            window.addEventListener('hashchange', this._onHashChangeBind, false);
+
+        },
+
+        _onHashChange: function(e){
+            var hash = window.location.hash.replace('#', ''),
+                oldHash = e.oldURL.substr(e.oldURL.indexOf('#')).replace('#', '');
+
+            if(hash === this.getId() || oldHash === this.getId()){
+                this.isActive() ? this.deactivate() : this.activate();
+            }
         },
 
         register: function(){

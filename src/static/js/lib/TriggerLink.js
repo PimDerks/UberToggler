@@ -30,12 +30,11 @@ var TriggerLink = (function(){
         e.stopPropagation();
 
         // Set hash
-        var href = this._isActive ? '' : this._element.getAttribute('href');
+        var href = this._isActive ? '#' : this._element.getAttribute('href');
 
         if(history.pushState && href) {
             history.pushState(null, null, href);
-        }
-        else {
+        } else {
             location.hash = href;
         }
 
