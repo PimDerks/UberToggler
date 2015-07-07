@@ -28,7 +28,7 @@ var Trigger = (function(){
         this._manager.add(this);
 
         // set initial state
-        this._isActive = false;
+        this._isActive = this._getState();
 
         // Get targets
         this._targets = this._getTargetIDs();
@@ -37,7 +37,7 @@ var Trigger = (function(){
         this._bindEvents();
 
         // deactivate by default for now
-        this.deactivate();
+        this.isActive() ? this.activate() : this.deactivate();
 
     };
 

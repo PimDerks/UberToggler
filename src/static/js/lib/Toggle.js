@@ -37,6 +37,9 @@ var Toggle = (function(){
             this._onTriggerBind = this._onTrigger.bind(this);
             this._mediator.subscribe('trigger', this._onTriggerBind);
 
+            // register
+            this._manager.add(this);
+
             // get initial state
             this._isActive = this._getState();
 
@@ -45,17 +48,30 @@ var Toggle = (function(){
 
         },
 
-        register: function(){
+        _hasActiveTrigger: function(){
 
-            // register
-            this._manager.add(this);
+            // check if one of the triggers for this toggle is active
+            var triggers = this._manager.getTriggersForToggle(this),
+                active = false;
+
+            // loop through all triggers
+            triggers.forEach(function(t){
+                if(!active){
+                    active = t.isActive();
+                }
+            });
+
+            return active;
 
         },
 
         _getState: function(){
 
+            // first check if one of the triggers is active
+            if(this._hasActiveTrigger()){
+                return true;
             // check if aria-hidden is available
-            if(this._element.getAttribute('aria-hidden')){
+            } else if(this._element.getAttribute('aria-hidden')){
                 return this._element.getAttribute('aria-hidden') == "false";
                 // check if aria-disabled is available
             } else if(this._element.getAttribute('aria-disabled')){

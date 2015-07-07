@@ -12,10 +12,6 @@ var TriggerInput = (function(){
 
     var p = exports.prototype = Object.create(_parent.prototype);
 
-    p._initialize = function(){
-        _parent.prototype._initialize.call(this);
-    };
-
     p._getState = function(){
         return this._element.checked;
     };
