@@ -11,6 +11,11 @@ function init(){
         TogglesInitialized.push(toggle);
     });
 
+    // register each toggle
+    TogglesInitialized.forEach(function(toggle){
+        toggle.register();
+    });
+
 };
 
 document.addEventListener('DOMContentLoaded', init, false);

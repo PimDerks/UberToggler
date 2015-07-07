@@ -36,6 +36,9 @@ var Toggle = (function(){
             // Listen to toggle-event
             this._onTriggerBind = this._onTrigger.bind(this);
             this._mediator.subscribe('trigger', this._onTriggerBind);
+        },
+
+        register: function(){
 
             // register
             this._manager.add(this);
