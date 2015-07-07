@@ -37,14 +37,18 @@ var Toggle = (function(){
             this._onTriggerBind = this._onTrigger.bind(this);
             this._mediator.subscribe('trigger', this._onTriggerBind);
 
-            // register
-            this._manager.add(this);
-
             // get initial state
             this._isActive = this._getState();
 
             // set initial state
             this.isActive() ? this.activate() : this.deactivate();
+
+        },
+
+        register: function(){
+
+            // register
+            this._manager.add(this);
 
         },
 
@@ -222,7 +226,7 @@ var Toggle = (function(){
 
         _onTrigger: function(e){
 
-            if(this.getGroup() && this.isActive()){
+            if(this.getGroup() && this.isActive() && this.eventMatch(e)){
                 return;
             }
 
