@@ -57,14 +57,6 @@ var TriggerSelect = (function(){
 
     };
 
-    p.activate = function(){
-        _parent.prototype.activate.call(this);
-    };
-
-    p.deactivate = function(){
-        _parent.prototype.deactivate.call(this);
-    };
-
     p._bindEvents = function(){
 
         // custom events

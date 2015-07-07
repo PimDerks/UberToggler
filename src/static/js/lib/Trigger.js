@@ -103,10 +103,6 @@ var Trigger = (function(){
 
     p._onClick = function(e){
 
-        // cancel default event
-        e.preventDefault();
-        e.stopPropagation();
-
         // Let the world know
         this._mediator.publish('trigger', {
             toggle: this,

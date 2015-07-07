@@ -28,6 +28,9 @@ var TriggerFactory = (function(){
                     case 'input':
                         new TriggerInput(node);
                         return;
+                    case 'a':
+                        new TriggerLink(node);
+                        return;
                     default:
                         new Trigger(node);
                         return;
