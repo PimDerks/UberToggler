@@ -12,6 +12,11 @@ var TriggerSelect = (function(){
 
     var p = exports.prototype = Object.create(_parent.prototype);
 
+    p._initialize = function(){
+        _parent.prototype._initialize.call(this);
+        this._onChange();
+    };
+
     /**
      * Returns an array of the ID's of the Toggles this Trigger targets.
      *
@@ -40,24 +45,24 @@ var TriggerSelect = (function(){
 
     p._onChange = function(){
 
+        var ids = this._getTargetIDs();
+
         // Let the world know
         this._mediator.publish('trigger', {
             toggle: this,
             id: this.getId(),
-            active: this._element.checked,
-            targets: this._getTargetIDs()
+            active: ids.length > 0,
+            targets: ids
         });
 
     };
 
     p.activate = function(){
         _parent.prototype.activate.call(this);
-        //this._element.checked = true;
     };
 
     p.deactivate = function(){
         _parent.prototype.deactivate.call(this);
-        //this._element.checked = false;
     };
 
     p._bindEvents = function(){

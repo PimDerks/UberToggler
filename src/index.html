@@ -132,6 +132,16 @@
         <div class="toggle" id="select-2" data-group="select">Toggle 2</div>
         <div class="toggle" id="select-3" data-group="select">Toggle 3</div>
 
+        <h3>Select with a different option selected</h3>
+        <select aria-controls="select-4 select-5 select-6">
+            <option value="4" aria-controls="select-4">Toggle 4</option>
+            <option value="5" aria-controls="select-5">Toggle 5</option>
+            <option value="6" aria-controls="select-6" selected="selected">Toggle 6</option>
+        </select>
+        <div class="toggle" id="select-4" data-group="select-a">Toggle 4</div>
+        <div class="toggle" id="select-5" data-group="select-a">Toggle 5</div>
+        <div class="toggle" id="select-6" data-group="select-a">Toggle 6</div>
+
         <h2>States</h2>
         <p>You can use various attributes to set the state of a toggle. All attributes should have <code>true</code> or <code>false</code> as their value</p>
         <ul>
