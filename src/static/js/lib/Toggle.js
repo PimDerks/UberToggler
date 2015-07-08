@@ -47,9 +47,15 @@ var Toggle = (function(){
             var hash = window.location.hash.replace('#', ''),
                 oldHash = e.oldURL.substr(e.oldURL.indexOf('#')).replace('#', '');
 
-            if(hash === this.getId() || oldHash === this.getId()){
-                this.isActive() ? this.deactivate() : this.activate();
+            if(hash === this.getId()){
+                this.isActive() ? null : this.activate();
             }
+
+            if(oldHash === this.getId()){
+                console.log('hashchange')
+                this.isActive() ? this.deactivate() : null;
+            }
+
         },
 
         register: function(){

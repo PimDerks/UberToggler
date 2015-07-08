@@ -43,6 +43,8 @@ var Group = (function(){
 
                 if(e.active){
                     this._closeAllExcept(toggle);
+                } else if(!this.getActiveToggle() && this._default){
+                    this._default.activate();
                 }
 
             }
@@ -61,6 +63,11 @@ var Group = (function(){
 
             // add
             this._toggles.push(Toggle);
+
+            // check if default
+            if(Toggle.getElement().dataset.groupDefault){
+                this._default = Toggle;
+            };
 
         },
 
@@ -107,7 +114,7 @@ var Group = (function(){
                 return t.isActive();
             });
 
-            return active[0];
+            return active[0] || false;
         },
 
         /**
