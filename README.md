@@ -44,3 +44,39 @@ use this to create components like accordions, tabs, dropdownmenus etc. etc.
 5. When the trigger-event contains a Toggle in its targets-property, the Toggle changes its state.
 6. When a Toggle changes its state, it throws a Toggle event.
 7. Triggers listen for the Toggle event. This makes sure that Toggle and Triggers are always in sync.
+
+## How to use it
+
+Initialize the Toggles in any way you want.
+
+### Options/settings
+
+#### Grouping Toggles together
+
+To create a ToggleGroup, use the data-group="your-group-name" here on every Toggle you want to include in the group.
+
+When you have a ToggleGroup where there should -always- be a Toggle active (e.g. a tab control) use the data-group-default attribute.
+
+### Target Toggles with a Trigger
+
+By default we use the href-element, as most of the time you'll want to use an anchor. On elements which don't have an href, use the ARIA-controls attribute with the ID of the Toggle you want to target as its value.
+
+#### Target multiple Toggles with one Trigger
+
+Simply use the ARIA-controls attribute with a space separated list of ID's of the Toggles you want to target.
+
+### States
+
+As said before, a Toggle can be on or off. We call this an activated or a deactivated state. These states can be set in three ways:
+
+#### ARIA-hidden
+
+The ARIA-hidden attribute must contain a boolean. This determines if an element is hidden from the user - not only in a visual way, but also when using other means of navigation.
+
+#### ARIA-disabled
+
+The ARIA-disabled attribute must contain a boolean. This determines if an element is perceivable, but not editable or otherwise operable.
+
+#### Default
+
+When the above scenarios don't match your requirements, this is the default. We use a simple data-state attribute. This has no semantic value.
