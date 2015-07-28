@@ -80,6 +80,11 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
 
         },
 
+        _hasActiveHash: function(){
+            var hash = window.location.hash.replace('#','');
+            return hash === this.getId();
+        },
+
         _hasActiveTrigger: function(){
 
             // check if one of the triggers for this toggle is active
@@ -100,7 +105,7 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
         _getState: function(){
 
             // first check if one of the triggers is active
-            if(this._hasActiveTrigger()){
+            if(this._hasActiveTrigger() || this._hasActiveHash()){
                 return true;
             // check if aria-hidden is available
             } else if(this._element.getAttribute('aria-hidden')){
@@ -192,10 +197,10 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             this._onStateChange();
 
             // allow focus
-            this._element.setAttribute('tabindex', '0');
+            // this._element.setAttribute('tabindex', '0');
 
             // receive focus
-            this._element.focus();
+            // this._element.focus();
 
         },
 
@@ -210,7 +215,7 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             this._onStateChange();
 
             // remove forced focus
-            this._element.removeAttribute('tabindex');
+            // this._element.removeAttribute('tabindex');
 
         },
 
