@@ -14,7 +14,13 @@ define(['lib/Trigger'], function(Trigger){
 
     p._initialize = function(){
         _parent.prototype._initialize.call(this);
-        this._onChange();
+
+        // Slight delay, as this will only be triggered once - but multiple toggles will be controlled via this trigger.
+        var _this = this;
+        setTimeout(function(){
+            _this._onChange();
+        });
+
     };
 
     /**

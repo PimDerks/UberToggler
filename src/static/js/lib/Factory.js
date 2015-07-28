@@ -27,7 +27,7 @@ define(['lib/Toggle', 'lib/TriggerSelect', 'lib/TriggerInput', 'lib/TriggerLink'
             return this._toggle;
         },
 
-        _create: function(node, opts){
+        _create: function(node, options){
 
             var name = node.nodeName.toLowerCase(),
                 toggle;
@@ -39,20 +39,20 @@ define(['lib/Toggle', 'lib/TriggerSelect', 'lib/TriggerInput', 'lib/TriggerLink'
 
             switch(name){
                 case 'select':
-                    toggle = new TriggerSelect(node);
+                    toggle = new TriggerSelect(node, options);
                     break;
                 case 'input':
-                    toggle = new TriggerInput(node);
+                    toggle = new TriggerInput(node, options);
                     break;
                 case 'a':
-                    toggle = new TriggerLink(node);
+                    toggle = new TriggerLink(node, options);
                     break;
                 default:
                     if(node.hasAttribute('href') || node.hasAttribute('aria-controls')) {
-                        toggle = new Trigger(node);
+                        toggle = new Trigger(node, options);
                         break;
                     }
-                    toggle = new Toggle(node);
+                    toggle = new Toggle(node, options);
                     break;
             }
 

@@ -13,9 +13,4 @@ define(['lib/Factory'], function(Factory){
         TogglesInitialized.push(toggle);
     });
 
-    // register each toggle
-    TogglesInitialized.forEach(function(toggle){
-        toggle.getToggle().register();
-    });
-
 });

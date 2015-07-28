@@ -41,6 +41,9 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             this._onHashChangeBind = this._onHashChange.bind(this);
             window.addEventListener('hashchange', this._onHashChangeBind, false);
 
+            // Register
+            this.register();
+
         },
 
         _onHashChange: function(e){
