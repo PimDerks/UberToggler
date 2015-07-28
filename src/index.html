@@ -6,6 +6,12 @@
         <title>UberToggler</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="static/js/vendor/jrburke/require.js" data-main="static/js/main"></script>
+        <script>
+            requirejs.config({
+                baseUrl: 'static/js/'
+            });
+        </script>
     </head>
     <style>
         .toggle { background: green; }
@@ -188,11 +194,34 @@
         <div class="toggle" id="toggle-activated-2" data-active="false">Toggle Activated</div>
         <a href="#toggle-activated-2" class="trigger">Trigger</a>
 
+        <h2>Dynamically generated triggers</h2>
+        <p>Toggles and triggers can also be generated dynamically ofcourse.</p>
+
+        <div class="toggle" id="toggle-dynamic">Toggle</div>
+        <a href="#toggle-dynamic" class="trigger">Trigger</a>
+
+        <button id="add-trigger">Add trigger</button>
+        <script>
+            require(['lib/Factory'], function(Factory){
+
+                var button = document.getElementById('add-trigger');
+                button.addEventListener('click', function(){
+
+                    // create trigger
+                    var trigger = document.createElement('a');
+                    trigger.href = '#toggle-dynamic';
+                    trigger.innerHTML = 'Trigger (Dynamically generated at ' + new Date() + ')';
+
+                    // append
+                    button.parentNode.insertBefore(trigger, button);
+
+                    // create trigger
+                    new Factory(trigger);
+
+                });
+
+            });
+        </script>
+
     </body>
-    <script src="static/js/vendor/jrburke/require.js" data-main="static/js/main"></script>
-    <script>
-        requirejs.config({
-            baseUrl: 'static/js/'
-        });
-    </script>
 </html>
