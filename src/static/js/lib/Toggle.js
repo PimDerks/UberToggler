@@ -104,13 +104,13 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
                 return true;
             // check if aria-hidden is available
             } else if(this._element.getAttribute('aria-hidden')){
-                return this._element.getAttribute('aria-hidden') == "false";
+                return this._element.getAttribute('aria-hidden') === "false";
                 // check if aria-disabled is available
             } else if(this._element.getAttribute('aria-disabled')){
-                return this._element.getAttribute('aria-disabled') == "false";
+                return this._element.getAttribute('aria-disabled') === "false";
                 // default
             } else {
-                return this._element.getAttribute('data-active') == "true";
+                return this._element.getAttribute('data-active') === "true";
             }
 
             // default
