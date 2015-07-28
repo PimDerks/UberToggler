@@ -1,8 +1,8 @@
-var Mediator = (function(window, undefined) {
+define(function() {
 
     function Mediator() {
         this._topics = {};
-    }
+    };
 
     Mediator.prototype = {
 
@@ -27,13 +27,6 @@ var Mediator = (function(window, undefined) {
                     return true;
                 }
             });
-
-            //for(var i = 0, len = this._topics[topic].length; i < len; i++ ) {
-            //    if(this._topics[topic][i] === callback){
-            //        this._topics[topic].splice(i, 1);
-            //        return true;
-            //    }
-            //}
 
             return false;
         },
@@ -70,4 +63,4 @@ var Mediator = (function(window, undefined) {
         }
     };
 
-})(window);
+});

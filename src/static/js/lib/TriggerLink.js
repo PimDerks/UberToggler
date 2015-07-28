@@ -1,4 +1,4 @@
-var TriggerLink = (function(){
+define(['lib/Trigger'], function(Trigger){
 
     'use strict';
 
@@ -58,4 +58,4 @@ var TriggerLink = (function(){
 
     return exports;
 
-}());
+});

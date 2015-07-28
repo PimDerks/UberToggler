@@ -1,4 +1,4 @@
-var TriggerInput = (function(){
+define(['lib/Trigger'], function(Trigger){
 
     'use strict';
 
@@ -52,4 +52,4 @@ var TriggerInput = (function(){
 
     return exports;
 
-}());
+});

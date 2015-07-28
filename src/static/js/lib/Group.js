@@ -1,4 +1,4 @@
-var Group = (function(){
+define(['util/Mediator'], function(Mediator){
 
     'use strict';
 
@@ -21,7 +21,6 @@ var Group = (function(){
 
         _initialize: function(){
 
-            this._manager = Manager.getInstance();
             this._mediator = Mediator.getInstance();
             this._onToggleBind = this._onToggle.bind(this);
             this._mediator.subscribe('toggle', this._onToggleBind);
@@ -225,4 +224,4 @@ var Group = (function(){
 
     return exports;
 
-}());
+});

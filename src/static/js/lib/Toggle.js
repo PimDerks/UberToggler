@@ -1,4 +1,4 @@
-var Toggle = (function(){
+define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
 
     'use strict';
 
@@ -52,10 +52,13 @@ var Toggle = (function(){
             }
 
             if(oldHash === this.getId()){
-                console.log('hashchange')
                 this.isActive() ? this.deactivate() : null;
             }
 
+        },
+
+        isTrigger: function(){
+            return false;
         },
 
         register: function(){
@@ -294,4 +297,4 @@ var Toggle = (function(){
 
     return exports;
 
-}());
+});

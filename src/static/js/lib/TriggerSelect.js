@@ -1,4 +1,4 @@
-var TriggerSelect = (function(){
+define(['lib/Trigger'], function(Trigger){
 
     'use strict';
 
@@ -67,4 +67,4 @@ var TriggerSelect = (function(){
 
     return exports;
 
-}());
+});

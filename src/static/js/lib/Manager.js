@@ -1,23 +1,22 @@
-var Manager = (function(){
+define(['lib/Group'], function(Group){
 
     'use strict';
 
     /**
-     * ToggleManager constructor.
+     * Manager constructor.
      *
-     * @class ToggleManager
+     * @class Manager
      * @constructor
      */
 
-    var ToggleManager = function () {
+    var Manager = function () {
 
         this._toggles = [];
         this._groups = [];
-        this._triggers = [];
 
     };
 
-    ToggleManager.prototype = {
+    Manager.prototype = {
 
         /**
          * Register toggle
@@ -33,9 +32,6 @@ var Manager = (function(){
 
             // look for groups
             this._manageGroup(Toggle);
-
-            // look for triggers
-            this._createTriggersForToggle(Toggle);
 
         },
 
@@ -69,23 +65,6 @@ var Manager = (function(){
         },
 
         /**
-         * Finds triggers for the given Toggle.
-         *
-         * @param Toggle
-         * @private
-         */
-
-        _createTriggersForToggle: function(Toggle){
-
-            var id = Toggle.getId(),
-                triggers = document.querySelectorAll('[href="#' + id + '"], [aria-controls~="' + id + '"]:not(option)');
-
-            var factory = new TriggerFactory();
-            factory.create(triggers);
-
-        },
-
-        /**
          * Get triggers for the given Toggle.
          * @param Toggle
          */
@@ -93,7 +72,7 @@ var Manager = (function(){
         getTriggersForToggle: function(Toggle){
 
             return this._toggles.filter(function(t, i){
-                if(t instanceof Trigger && t._targets){
+                if(t.isTrigger() && t._targets){
                     return t._targets.indexOf(Toggle.getId()) > -1;
                 }
             });
@@ -145,7 +124,7 @@ var Manager = (function(){
         /**
          * Get togglegroup by Id
          *
-         * @memberof ToggleManager
+         * @memberof Manager
          * @param {String} Id of toggle to get
          * @return {Object}
          * @public
@@ -168,9 +147,9 @@ var Manager = (function(){
 
     return {
         getInstance:function(){
-            if (!_instance){_instance = new ToggleManager();}
+            if (!_instance){_instance = new Manager();}
             return _instance;
         }
     };
 
-}());
+});

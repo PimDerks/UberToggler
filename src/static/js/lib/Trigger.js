@@ -1,4 +1,4 @@
-var Trigger = (function(){
+define(['lib/Toggle'], function(Toggle){
 
     'use strict';
 
@@ -39,6 +39,10 @@ var Trigger = (function(){
         // deactivate by default for now
         this.isActive() ? this.activate() : this.deactivate();
 
+    };
+
+    p.isTrigger = function(){
+        return true;
     };
 
     p._bindEvents = function(){
@@ -145,4 +149,4 @@ var Trigger = (function(){
 
     return exports;
 
-}());
+});

@@ -6,7 +6,6 @@
         <title>UberToggler</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/scss/screen.css" />
     </head>
     <style>
         .toggle { background: green; }
@@ -190,14 +189,10 @@
         <a href="#toggle-activated-2" class="trigger">Trigger</a>
 
     </body>
-    <script src="static/js/util/Mediator.js"></script>
-    <script src="static/js/lib/Manager.js"></script>
-    <script src="static/js/lib/Group.js"></script>
-    <script src="static/js/lib/Toggle.js"></script>
-    <script src="static/js/lib/TriggerFactory.js"></script>
-    <script src="static/js/lib/Trigger.js"></script>
-    <script src="static/js/lib/TriggerInput.js"></script>
-    <script src="static/js/lib/TriggerSelect.js"></script>
-    <script src="static/js/lib/TriggerLink.js"></script>
-    <script src="static/js/main.js"></script>
+    <script src="static/js/vendor/jrburke/require.js" data-main="static/js/main"></script>
+    <script>
+        requirejs.config({
+            baseUrl: 'static/js/'
+        });
+    </script>
 </html>
