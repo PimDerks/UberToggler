@@ -197,6 +197,55 @@
         <h2>Dynamically generated triggers</h2>
         <p>Toggles and triggers can also be generated dynamically ofcourse.</p>
 
+        <h3>Dynamic toggle</h3>
+
+        <div id="dynamic-buttons">
+            <button aria-controls="toggle-dynamic-group-1">Trigger 1</button>
+            <button aria-controls="toggle-dynamic-group-2">Trigger 2</button>
+            <button aria-controls="toggle-dynamic-group-3">Trigger 3</button>
+        </div>
+
+        <div class="toggle" id="toggle-dynamic-group-1" data-group="dynamic">Toggle 1</div>
+        <div class="toggle" id="toggle-dynamic-group-2" data-group="dynamic">Toggle 2</div>
+        <div class="toggle" id="toggle-dynamic-group-3" data-group="dynamic">Toggle 3</div>
+
+        <button id="add-toggle">Add toggle</button>
+
+        <script>
+            require(['lib/Factory'], function(Factory){
+
+                var button = document.getElementById('add-toggle');
+                button.addEventListener('click', function(){
+
+                    // id
+                    var id = 'toggle-dynamic-group-' + Math.random().toString(36).substring(7);
+
+                    // create toggle
+                    var toggle = document.createElement('div');
+                    toggle.href = '#toggle-dynamic';
+                    toggle.innerHTML = 'Toggle ' + new Date() + ')';
+                    toggle.id = id;
+                    toggle.setAttribute('data-group', 'dynamic');
+
+                    // create trigger
+                    var trigger = document.createElement('button');
+                    trigger.setAttribute('aria-controls', id);
+                    trigger.innerHTML = 'Trigger (Dynamically generated at ' + new Date() + ')';
+
+                    // append
+                    button.parentNode.insertBefore(toggle, button);
+                    document.getElementById('dynamic-buttons').appendChild(trigger);
+
+                    // create trigger and toggle
+                    new Factory(toggle);
+                    new Factory(trigger);
+
+                });
+
+            });
+        </script>
+
+        <h3>Dynamic trigger</h3>
         <div class="toggle" id="toggle-dynamic">Toggle</div>
         <a href="#toggle-dynamic" class="trigger">Trigger</a>
 
