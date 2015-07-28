@@ -42,7 +42,10 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             window.addEventListener('hashchange', this._onHashChangeBind, false);
 
             // Register
-            this.register();
+            var _this = this;
+            setTimeout(function(){
+                _this.register();
+            });
 
         },
 
