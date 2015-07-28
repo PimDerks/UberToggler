@@ -2,15 +2,9 @@ define(['lib/Factory'], function(Factory){
 
     'use strict';
 
-    // get toggles
-    var toggles = document.querySelectorAll('.toggle');
-
-    var TogglesInitialized = [];
-
     // initialize toggles
-    [].slice.call(toggles).forEach(function(el){
-        var toggle = new Factory(el, el.dataset.options ? JSON.parse(toggle.dataset.options) : null);
-        TogglesInitialized.push(toggle);
+    [].slice.call(document.querySelectorAll('.toggle')).forEach(function(el){
+        new Factory(el, el.dataset.options ? JSON.parse(toggle.dataset.options) : null);
     });
 
 });
