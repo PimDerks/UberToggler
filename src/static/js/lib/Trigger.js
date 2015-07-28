@@ -24,20 +24,14 @@ define(['lib/Toggle'], function(Toggle){
         this._onToggleBind = this._onToggle.bind(this);
         this._mediator.subscribe('toggle', this._onToggleBind);
 
-        // register
-        this._manager.add(this);
-
-        // set initial state
-        this._isActive = this._getState();
-
         // Get targets
         this._targets = this._getTargetIDs();
 
         // Bind events
         this._bindEvents();
 
-        // deactivate by default for now
-        this.isActive() ? this.activate() : this.deactivate();
+        // register without delay
+        this.register();
 
     };
 
