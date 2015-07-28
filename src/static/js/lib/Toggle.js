@@ -190,6 +190,13 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             this._element.classList.remove('deactivated');
             this._isActive = true;
             this._onStateChange();
+
+            // allow focus
+            this._element.setAttribute('tabindex', '0');
+
+            // receive focus
+            this._element.focus();
+
         },
 
         /**
@@ -201,6 +208,10 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             this._element.classList.add('deactivated');
             this._isActive = false;
             this._onStateChange();
+
+            // remove forced focus
+            this._element.removeAttribute('tabindex');
+
         },
 
         /**
