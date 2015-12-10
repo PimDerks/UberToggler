@@ -1,4 +1,4 @@
-define(['lib/Toggle', 'lib/TriggerSelect', 'lib/TriggerInput', 'lib/TriggerLink', 'lib/Trigger', 'lib/Manager'], function(Toggle, TriggerSelect, TriggerInput, TriggerLink, Trigger, Manager){
+define(['lib/Toggle', 'lib/TriggerSelect', 'lib/TriggerChoice', 'lib/TriggerInput', 'lib/TriggerLink', 'lib/Trigger', 'lib/Manager'], function(Toggle, TriggerSelect, TriggerChoice, TriggerInput, TriggerLink, Trigger, Manager){
 
     'use strict';
 
@@ -42,7 +42,15 @@ define(['lib/Toggle', 'lib/TriggerSelect', 'lib/TriggerInput', 'lib/TriggerLink'
                     toggle = new TriggerSelect(node, options);
                     break;
                 case 'input':
-                    toggle = new TriggerInput(node, options);
+                    switch(node.type){
+                        case 'radio':
+                        case 'checkbox':
+                            toggle = new TriggerChoice(node, options);
+                            break;
+                        default:
+                            toggle = new TriggerInput(node, options);
+                            break;
+                    }
                     break;
                 case 'a':
                     toggle = new TriggerLink(node, options);

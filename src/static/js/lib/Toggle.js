@@ -255,9 +255,16 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
          * Reverse the state of this Toggle.
          */
 
-        toggle: function(){
+        toggle: function(e){
 
-            this.isActive() ? this.deactivate() : this.activate();
+            var activate = this.isActive();
+            if(e && e.force){
+                activate = e.active;
+            }
+
+            console.log(this._element, activate);
+
+            activate ? this.deactivate() : this.activate();
 
         },
 
@@ -295,7 +302,7 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             }
 
             if(this.eventMatch(e)){
-                this.toggle();
+                this.toggle(e);
             }
 
         },

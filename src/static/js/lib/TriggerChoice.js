@@ -13,7 +13,7 @@ define(['lib/Trigger'], function(Trigger){
     var p = exports.prototype = Object.create(_parent.prototype);
 
     p._getState = function(){
-        return this._element.value != '';
+        return this._element.checked;
     };
 
     p._onChange = function(){
@@ -22,9 +22,8 @@ define(['lib/Trigger'], function(Trigger){
         this._mediator.publish('trigger', {
             toggle: this,
             id: this.getId(),
-            active: this._element.value == '',
-            targets: this._targets,
-            force: true
+            active: this.isActive(),
+            targets: this._targets
         });
 
     };
@@ -32,14 +31,14 @@ define(['lib/Trigger'], function(Trigger){
     p.activate = function(){
 
         _parent.prototype.activate.call(this);
-        this._element.value != '';
+        this._element.checked = true;
 
     };
 
     p.deactivate = function(){
 
         _parent.prototype.deactivate.call(this);
-        this._element.value == '';
+        this._element.checked = false;
 
     };
 
