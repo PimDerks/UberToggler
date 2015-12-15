@@ -41,11 +41,64 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             this._onHashChangeBind = this._onHashChange.bind(this);
             window.addEventListener('hashchange', this._onHashChangeBind, false);
 
+            // Listen to click event on body
+            if(this._element.dataset.outside){
+                this._onBodyClickBind = this._onBodyClick.bind(this);
+                document.body.addEventListener('click', this._onBodyClickBind);
+            }
+
             // Register
             var _this = this;
             setTimeout(function(){
                 _this.register();
             });
+
+        },
+
+        _onBodyClick: function(e){
+
+            // target click
+            var target = e.target;
+
+            // get triggers related to this toggle
+            var triggers = this._manager.getTriggersForToggle(this),
+                elements = [this._element],
+                inside = false;
+
+            // add elements of triggers to 'elements' array
+            triggers.forEach(function(t){
+                elements.push(t.getElement());
+            });
+
+            var isChildOf = function (element, parentElement) {
+                var parent = element;
+                do {
+
+                    if (parent && parent === parentElement) {
+                        return true;
+                    }
+
+                    if (parent == document.documentElement) {
+                        break;
+                    }
+
+                    // jshint -W084
+                } while (parent = parent.parentNode);
+                return false;
+            };
+
+            // check if click is on toggle or on triggers
+            elements.forEach(function(el){
+
+                if(isChildOf(target, el) && !inside){
+                    inside = true;
+                };
+
+            });
+
+            if(!inside && this.isActive()){
+                this.deactivate();
+            }
 
         },
 
@@ -261,8 +314,6 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             if(e && e.force){
                 activate = e.active;
             }
-
-            console.log(this._element, activate);
 
             activate ? this.deactivate() : this.activate();
 
