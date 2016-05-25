@@ -30,11 +30,17 @@ define(['lib/Toggle', 'lib/TriggerSelect', 'lib/TriggerChoice', 'lib/TriggerInpu
         _create: function(node, options){
 
             var name = node.nodeName.toLowerCase(),
+                options = options || {},
                 toggle;
 
             // check if this node is already a trigger
             if(node.id && this._manager.getToggleById(node.id)){
                 return;
+            }
+
+            // check if it's a dialog
+            if(node.getAttribute('role') === 'dialog'){
+                options.focusContain = true;
             }
 
             switch(name){

@@ -1,6 +1,8 @@
-define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
+define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, Mediator, FocusContain){
 
     'use strict';
+
+    console.log(FocusContain, Mediator);
 
     var exports = function(element, options){
 
@@ -32,6 +34,10 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
          */
 
         _initialize: function(){
+
+            if(this._options.focusContain){
+                this._focusContain = new FocusContain(this._element);
+            }
 
             // Listen to toggle-event
             this._onTriggerBind = this._onTrigger.bind(this);
@@ -249,11 +255,9 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             this._isActive = true;
             this._onStateChange();
 
-            // allow focus
-            // this._element.setAttribute('tabindex', '0');
-
-            // receive focus
-            // this._element.focus();
+            if(this._focusContain) {
+                this._focusContain.enable();
+            }
 
         },
 
@@ -267,8 +271,9 @@ define(['lib/Manager', 'util/Mediator'], function(Manager, Mediator){
             this._isActive = false;
             this._onStateChange();
 
-            // remove forced focus
-            // this._element.removeAttribute('tabindex');
+            if(this._focusContain) {
+                this._focusContain.disable();
+            }
 
         },
 

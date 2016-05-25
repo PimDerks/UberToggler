@@ -37,17 +37,13 @@
 
         [aria-disabled],
         [data-active]{
-            transition: all 1000ms ease-out;
+            transition: all 100ms ease-out;
         }
 
         [aria-active="false"]
         [aria-disabled="true"]{
             opacity: .5;
             pointer-events: none;
-        }
-
-        *:focus {
-            outline: 5px solid black;
         }
     </style>
     <body>
@@ -166,6 +162,17 @@
         <div class="toggle" id="select-4" data-group="select-a">Toggle 4</div>
         <div class="toggle" id="select-5" data-group="select-a">Toggle 5</div>
         <div class="toggle" id="select-6" data-group="select-a">Toggle 6</div>
+
+        <h3>Dialog</h3>
+        <div id="dialog" role="dialog" aria-hidden="true" class="toggle">
+            <p>This is a dialog. Just a basic toggle, but it also has focus containment.</p>
+            <a href="#">Anchor</a>
+            <button type="button">Button</button>
+            <button type="button" aria-controls="dialog">Close dialog</button>
+        </div>
+        <button aria-controls="dialog">Open dialog</button>
+
+        <p>Please note that the dialog-styling is missing in this demo.</p>
 
         <h2>States</h2>
         <p>You can use various attributes to set the state of a toggle. All attributes should have <code>true</code> or <code>false</code> as their value</p>
