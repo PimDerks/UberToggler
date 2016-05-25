@@ -2,8 +2,6 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
 
     'use strict';
 
-    console.log(FocusContain, Mediator);
-
     var exports = function(element, options){
 
         // bounce
