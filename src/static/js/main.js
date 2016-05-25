@@ -4,7 +4,7 @@ define(['lib/Factory'], function(Factory){
 
     // initialize toggles
     [].slice.call(document.querySelectorAll('.toggle')).forEach(function(el){
-        new Factory(el, el.dataset.options ? JSON.parse(toggle.dataset.options) : null);
+        new Factory(el, el.dataset.options ? JSON.parse(el.dataset.options) : null);
     });
 
 });
