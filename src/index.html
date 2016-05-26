@@ -175,13 +175,24 @@
         <h3>Dialog</h3>
         <div id="dialog" role="dialog" aria-hidden="true" class="toggle">
             <p>This is a dialog. Just a basic toggle, but it also has focus containment.</p>
-            <a href="#">Anchor</a>
+            <a href="http://www.google.com">Anchor</a>
             <button type="button">Button</button>
             <button type="button" aria-controls="dialog">Close dialog</button>
         </div>
         <button aria-controls="dialog">Open dialog</button>
 
         <p>Please note that the dialog-styling is missing in this demo.</p>
+
+        <h2>Children</h2>
+        <p>Focusable children elements are automatically disabled when a toggle is deactivated.</p>
+
+        <div class="toggle" id="children">
+            <p>Lorem ipsum <a href="http://www.google.com">link</a>.</p>
+            <input type="text" />
+            <button type="button">Button</button>
+        </div>
+        <button aria-controls="children">Open dialog</button>
+
 
         <h2>States</h2>
         <p>You can use various attributes to set the state of a toggle. All attributes should have <code>true</code> or <code>false</code> as their value</p>

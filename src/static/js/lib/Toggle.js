@@ -23,6 +23,12 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
 
     };
 
+    function $$(selector, context) {
+        return [].slice.call((context || document).querySelectorAll(selector));
+    }
+
+    var focusableElements = ['a[href]', 'area[href]', 'input', 'select', 'textarea', 'button', 'iframe', 'object', 'embed', '[contenteditable]'];
+
     exports.prototype = {
 
         /**
@@ -64,6 +70,8 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
                 }
 
             }
+
+            this._onChildClickBind = this._childClick.bind(this);
 
             // Register
             var _this = this;
@@ -300,6 +308,8 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
                 this._startMouseTimer(1000);
             }
 
+            this._toggleChildren();
+
         },
 
         /**
@@ -315,6 +325,8 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
             if(this._focusContain) {
                 this._focusContain.disable();
             }
+
+            this._toggleChildren();
 
         },
 
@@ -335,6 +347,41 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
             } else {
                 this._element.setAttribute('data-active', this.isActive());
             }
+
+        },
+
+        _getFocusableElements: function () {
+
+            return $$(focusableElements.join(','), this._element).filter(function (child) {
+                return !!(child.offsetWidth || child.offsetHeight || child.getClientRects().length);
+            });
+
+        },
+
+        _childClick: function(e){
+            e.preventDefault();
+            e.stopPropagation();
+        },
+
+        _toggleChildren: function(){
+
+            var children = this._getFocusableElements(),
+                active = this.isActive(),
+                context = this;
+
+            children.forEach(function(c){
+
+                if(c.disabled === 'undefined') {
+                    c.setAttribute('tabindex', active ? '' : -1);
+                } else {
+                    c.disabled = !active;
+                }
+
+                // add listeners
+                var method = active ? 'removeEventListener' : 'addEventListener';
+                c[method]('click', context._onChildClickBind);
+
+            });
 
         },
 
