@@ -33,6 +33,20 @@ define(['lib/Toggle'], function(Toggle){
         // register without delay
         this.register();
 
+        // set initial state
+        var state = this.getTargetState();
+        state ? this.activate() : this.deactivate();
+
+    };
+
+    p.getTargetState = function(){
+        var id = this._targets[0],
+            toggle = this._manager.getToggleById(id);
+        if(toggle){
+            return toggle.isActive();
+        } else {
+            return false;
+        }
     };
 
     p.isTrigger = function(){
