@@ -29,6 +29,15 @@ define(['lib/Trigger'], function(Trigger){
 
     };
 
+    p._onKeyDown = function(e){
+
+        var context = this;
+
+        // set to end of queue so value is in input
+        setTimeout(context._onChangeBind);
+
+    };
+
     p.activate = function(){
 
         _parent.prototype.activate.call(this);
@@ -48,6 +57,9 @@ define(['lib/Trigger'], function(Trigger){
         // custom events
         this._onChangeBind = this._onChange.bind(this);
         this._element.addEventListener('change', this._onChangeBind);
+
+        this._onKeyDownBind = this._onKeyDown.bind(this);
+        this._element.addEventListener('keydown', this._onKeyDownBind);
 
     };
 
