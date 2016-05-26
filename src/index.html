@@ -59,9 +59,18 @@
         <button type="button" aria-controls="toggle-button" class="trigger">Trigger</button>
 
         <h2>Toggle disables when clicking outside</h2>
-        <div class="toggle" id="toggle-outside" data-outside="true">Toggle</div>
-        <button type="button" aria-controls="toggle-outside" class="trigger">Trigger</button>
-        <button type="button" aria-controls="toggle-outside" class="trigger">Trigger 2</button>
+        <div class="toggle" id="toggle-outside-both" data-outside="both">Toggle Both</div>
+        <button type="button" aria-controls="toggle-outside-both" class="trigger">Trigger</button>
+        <br />
+        <br />
+        <div class="toggle" id="toggle-outside-mouse" data-outside="mouse">Toggle Mouse</div>
+        <button type="button" aria-controls="toggle-outside-mouse" class="trigger">Trigger</button>
+        <br />
+        <br />
+        <div class="toggle" id="toggle-outside-click" data-outside="click">Toggle Click</div>
+        <button type="button" aria-controls="toggle-outside-click" class="trigger">Trigger</button>
+
+        <p>Use <code>both</code>, <code>mouse</code> or <code>click</code> to determine when to disable the toggle.</p>
 
         <h2>Tab</h2>
         <a href="#tab-1">Tab 1</a>

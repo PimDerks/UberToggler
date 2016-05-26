@@ -47,8 +47,22 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
 
             // Listen to click event on body
             if(this._element.dataset.outside){
-                this._onBodyClickBind = this._onBodyClick.bind(this);
-                document.body.addEventListener('click', this._onBodyClickBind);
+
+                if(this._element.dataset.outside === 'both' || this._element.dataset.outside === 'click') {
+                    this._onBodyClickBind = this._onBodyClick.bind(this);
+                    document.body.addEventListener('click', this._onBodyClickBind);
+                }
+
+                if(this._element.dataset.outside === 'mouse') {
+
+                    this._onMouseEnterBind = this._onMouseEnter.bind(this);
+                    this._element.addEventListener('mouseenter', this._onMouseEnterBind);
+
+                    this._onMouseLeaveBind = this._onMouseLeave.bind(this);
+                    this._element.addEventListener('mouseleave', this._onMouseLeaveBind);
+
+                }
+
             }
 
             // Register
@@ -57,6 +71,31 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
                 _this.register();
             });
 
+        },
+
+        _startMouseTimer: function(delay){
+
+            if(!delay){
+                delay = 500;
+            }
+
+            var context = this;
+
+            // start timer
+            this._mouseTimer = setTimeout(function(){
+                context.deactivate();
+            }, delay);
+
+        },
+
+        _onMouseEnter: function(){
+            if(this._mouseTimer){
+                clearTimeout(this._mouseTimer);
+            }
+        },
+
+        _onMouseLeave: function(e){
+            this._startMouseTimer();
         },
 
         _onBodyClick: function(e){
@@ -255,6 +294,10 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
 
             if(this._focusContain) {
                 this._focusContain.enable();
+            }
+
+            if(this._element.dataset.outside === 'mouse' || this._element.dataset.outside === 'both'){
+                this._startMouseTimer(1000);
             }
 
         },
