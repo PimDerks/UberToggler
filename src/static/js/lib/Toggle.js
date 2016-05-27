@@ -420,7 +420,7 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
 
         eventMatch: function(e){
 
-            if(e.id === this._element.id){
+            if(e.id === this.getId()){
                 return false;
             }
 
