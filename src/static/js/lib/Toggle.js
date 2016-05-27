@@ -59,7 +59,7 @@ define(['lib/Manager', 'util/Mediator', 'util/FocusContain'], function(Manager, 
                     document.body.addEventListener('click', this._onBodyClickBind);
                 }
 
-                if(this._element.dataset.outside === 'mouse') {
+                if(this._element.dataset.outside === 'both' || this._element.dataset.outside === 'mouse') {
 
                     this._onMouseEnterBind = this._onMouseEnter.bind(this);
                     this._element.addEventListener('mouseenter', this._onMouseEnterBind);
